@@ -67,8 +67,8 @@ function copiar() {
     input.focus();
     let tituloMensaje = document.getElementById("titulo_mensaje").textContent;
     navigator.clipboard.writeText(tituloMensaje).then(function() {
-        alert('Texto copiado al portapapeles');
-    }, function(err) {
-        alert('Hubo un problema al copiar el texto: ', err);
+        swal("Mensaje Copiado"), ("warning");
+    },
+        swal("Ooops!", "Hubo un problema al copiar texto","warning");                                              
     });
 }

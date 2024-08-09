@@ -13,14 +13,13 @@ function encriptar() {
         .replace(/o/gi, "ober")
         .replace(/u/gi, "ufat");
 
-    if (texto.trim() !=0) {
+    if (texto.trim()  !== "") {
         tituloMensaje.textContent = textoCifrado;
         personaje.style.display = 'none'; 
         parrafo.style.display = 'none';
         mensaje.style.top = '5%';
         tituloMensaje.style.fontSize = '20px';
         tituloMensaje.style.textAlign = 'left';
-
         copiar.disabled = false; // Habilita el botón de copiar
     } else {
         tituloMensaje.textContent = "Ningún mensaje fue encontrado";
@@ -63,12 +62,10 @@ function desencriptar() {
 }
 
 function copiar() {
-    const input = document.querySelector(".texto");
-    input.focus();
     let tituloMensaje = document.getElementById("titulo_mensaje").textContent;
     navigator.clipboard.writeText(tituloMensaje).then(function() {
-        alert('Texto copiado al portapapeles');
-    }, function(err) {
-        alert('Hubo un problema al copiar el texto: ', err);
+        swal("Mensaje Copiado", "", "success");
+    }).catch(function(err) {
+        swal("Ooops!", "Hubo un problema al copiar texto", "warning");
     });
 }
